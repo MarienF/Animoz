@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste animaux</title>
+</head>
+<body>
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="listeSoigneurs.html" data-th-href="@{/soigneurs}">Liste des soigneurs</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="listeAnimaux.html" data-th-href="@{/animaux}">Liste des animaux</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="addAnimal.html" data-th-href="@{/animal}">Ajouter un animal</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="addSoigneur.html" data-th-href="@{/soigneur}">Ajouter un soigneur</a>
+    </li>
+</ul>
+<form method="GET" data-th-action="@{/findAnimal}" accept-charset="utf-8">
+<div>
+    <input type="text" name="filtre" placeholder="Rechercher...">
+</div>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>|</th>
+        <th>Espece</th>
+        <th>|</th>
+        <th>Régime</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-th-each="animal : ${listeAnimaux}">
+        <td data-th-text="${ animal.nom }"></td>
+        <td>|</td>
+        <td data-th-text="${ animal.espece }"></td>
+        <td>|</td>
+        <td data-th-text="${ animal.regime }"></td>
+        <td>|</td>
+        <td><a href="DetailAnimal.html" data-th-href="@{/animal/{id}(id=${animal.id})}">Détails</i></a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
